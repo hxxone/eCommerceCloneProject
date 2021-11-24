@@ -1,7 +1,7 @@
-import "./app.css"
+import "./app.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
-import NewProduct from './pages/newProduct/NewProduct';
+import NewProduct from "./pages/newProduct/NewProduct";
 import NewUser from "./pages/newUser/NewUser";
 import Product from "./pages/product/Product";
 import ProductList from "./pages/productList/ProductList";
@@ -9,19 +9,20 @@ import User from "./pages/user/User";
 import UserList from "./pages/userList/UserList";
 import Topbar from "./components/topbar/Topbar";
 import Sidebar from "./components/sidebar/Sidebar";
-
-
+import Login from "./pages/login/Login";
 
 function App() {
-	
 	return (
 		<Router>
-			<Topbar/>
-			<div className="container">
-				<Sidebar/>
-				<Switch>
+			<Switch>
+				<Route path="/login">
+					<Login />
+				</Route>
+				<Topbar />
+				<Sidebar />
+				<div className="container">
 					<Route exact path="/">
-						<Home/>
+						<Home />
 					</Route>
 					<Route path="/users">
 						<UserList />
@@ -39,10 +40,10 @@ function App() {
 						<Product />
 					</Route>
 					<Route path="/newProduct">
-						<NewProduct/>
+						<NewProduct />
 					</Route>
-				</Switch>
-			</div>
+				</div>
+			</Switch>
 		</Router>
 	);
 }

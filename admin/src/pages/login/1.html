@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="//code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+  <script>
+    let arr = [
+      { sum: [] , minus: [], mul: [], div:[] }
+    ]
+
+    $(document).ready(function(e){
+      $('button').eq(0).click(() => {
+        $('.in').each(function (i, j){
+          arr[0][j.name].push(Number($(j).val()))
+        })
+        let sum=0
+        Object.keys(arr[0]).reduce( (acc, cur) =>{
+            sum += arr[0][cur].reduce( (acc, cur) => acc + cur)
+            return sum
+        },0)
+        $('input[name="out"]').val(sum) 
+        
+      })
+      $('button').eq(1).click(()=>{
+        $('input').each(function (i, j){
+          $(j).val('')
+        }) 
+      })
+    })
+  </script>
+  <div>
+    <div>
+      <label for="sum"> + </label>
+      <input type="text" name='sum' class='in'/>
+    </div>
+    <div>
+      <label for="minus"> - </label>
+      <input type="text" name="minus" class='in'/>
+    </div>
+    <div>
+      <label for="mul"> * </label>
+      <input type="text" name="mul" class='in'/>
+    </div>
+    <div>
+      <label for="div"> / </label>
+      <input type="text" name="div" class='in'/>
+    </div>
+    <button> 데이터 배열 추가 </button>
+    <button> 초기화  </button>
+    <div>
+      <label for="acc"> 총합 </label>
+      <input type='text' name='out' />
+    </div>
+    
+  </div>
+
+
+</body>
+</html>
